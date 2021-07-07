@@ -1,5 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var charSet = "abcdefghijklmnopqrstuvwxyz"
+var specialSet = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+var numberSet = "1234567890"
 
 // Write password to the #password input
 function writePassword() {
@@ -25,6 +28,29 @@ function generatePassword() {
     generatePassword()
   }
 
-      
+  //acquiring whether the user wants nummbers or upper, lower, or special charadcters
+  
+  var lowerCase = confrim("Would you like lower case letters?")
+  var upperCase = confirm("Would you like upper case letters?")
+  var special = confrim("Would you like special characters(such as !%&*)?")
+  var numbers = confirm("Would you like numbers?")
+
+  // applying lower case to the password
+
+  if( lowerCase === true){
+
+    for (var i = 0; i < passwordLength; i++) {
+
+      min= 0
+      max= charSet.length - 1
+
+      randomInt = Math.floor(Math.random()*(max-min+1)+min);
+      randomChar = charSet.charAt(randomInt);
+      userRequest.push(randomChar)
+      }
+  }
+  
+  // appling upper case letters to the password
+
 } 
   
