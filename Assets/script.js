@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var lowerSet = "abcdefghijklmnopqrstuvwxyz"
-var specialSet = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~"
+var specialSet = " !#$%&'\"\\)*+,-./:;<=>?@[]^_`{|}~"
 var numberSet = "1234567890"
 var upperSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -32,18 +32,22 @@ function generatePassword() {
   //acquiring whether the user wants nummbers or upper, lower, or special charadcters
   
   var lowerCase = confirm("Would you like lower case letters?")
-  console.log(lowerCase)
+  
   var upperCase = confirm("Would you like upper case letters?")
-  console.log(upperCase)
+  
   var specialChar = confirm("Would you like special characters(such as !%&*)?")
-  console.log(specialChar)
+  
   var numbersLog = confirm("Would you like numbers?")
-  console.log(numbersLog)
-
+  
   var userRequest = []
+
+  if (lowerCase== false && upperCase == false && specialChar == false && numbersLog == false){
+    alert("Please select at least one of the character sets to use for your password.")
+    generatePassword()
+  }
   // applying lower case to the password
 
-  if( lowerCase == true){
+  if (lowerCase == true){
 
     for (var i = 0; i < passwordLength; i++) {
 
@@ -51,14 +55,14 @@ function generatePassword() {
       max= lowerSet.length - 1
 
       var randomInt = Math.floor(Math.random()*(max-min+1)+min);
-      var randomChar = charSet.charAt(randomInt);
+      var randomChar = lowerSet.charAt(randomInt);
       userRequest.push(randomChar)
       }
   }
   
   // appling upper case letters to the password
 
-  if( upperCase == true){
+  if (upperCase == true){
 
     for (var i = 0; i < passwordLength; i++) {
 
@@ -74,7 +78,7 @@ function generatePassword() {
 
   //applying special characters
 
-  if( specialChar == true){
+  if (specialChar == true){
 
     for (var i = 0; i < passwordLength; i++) {
 
@@ -89,7 +93,7 @@ function generatePassword() {
   
   //applying numbers 
 
-  if( numbersLog == true) {
+  if (numbersLog == true) {
 
     for (var i = 0; i < passwordLength; i++) {
 
@@ -101,10 +105,10 @@ function generatePassword() {
       userRequest.push(randomChar)
       }
   }
-  console.log(userRequest)
-  userRequest = userRequest.join("")
-  console.log(userRequest)
 
+  userRequest = userRequest.join("")
+
+ // generating final password using the array at userRequest
   var finalPassword = []
 
   for(var i = 0; i < passwordLength; i++) {
