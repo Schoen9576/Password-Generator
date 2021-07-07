@@ -32,8 +32,8 @@ function generatePassword() {
   
   var lowerCase = confrim("Would you like lower case letters?")
   var upperCase = confirm("Would you like upper case letters?")
-  var special = confrim("Would you like special characters(such as !%&*)?")
-  var numbers = confirm("Would you like numbers?")
+  var specialChar = confrim("Would you like special characters(such as !%&*)?")
+  var numbersSet = confirm("Would you like numbers?")
 
   // applying lower case to the password
 
@@ -52,5 +52,47 @@ function generatePassword() {
   
   // appling upper case letters to the password
 
-} 
+  if( upperCase === true){
+
+    for (var i = 0; i < passwordLength; i++) {
+
+      min= 0
+      max= charSet.length - 1
+
+      randomInt = Math.floor(Math.random()*(max-min+1)+min);
+      randomChar = charSet.toLocaleUpperCase().charAt(randomInt);
+      userRequest.push(randomChar)
+      }
+  }
+ 
+
+  //applying special characters
+
+  if( specialChar === true){
+
+    for (var i = 0; i < passwordLength; i++) {
+
+      min= 0
+      max= specialSet.length - 1
+
+      randomInt = Math.floor(Math.random()*(max-min+1)+min);
+      randomChar = charSet.charAt(randomInt);
+      userRequest.push(randomChar)
+      }
+  }
   
+  //applying numbers 
+
+  if( numbersSet === true) {
+
+    for (var i = 0; i < passwordLength; i++) {
+
+      min= 0
+      max= numbersSet.length - 1
+
+      randomInt = Math.floor(Math.random()*(max-min+1)+min);
+      randomChar = charSet.charAt(randomInt);
+      userRequest.push(randomChar)
+      }
+  }
+}
